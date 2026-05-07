@@ -1,0 +1,523 @@
+/* =============================================
+   stile.css — Foglio di stile principale
+   Sito: Oltre l'Orbita — Missioni NASA
+   Progetto didattico — Informatica
+   ============================================= */
+
+/* ---------- VARIABILI GLOBALI (colori, font) ---------- */
+:root {
+  --sfondo:        #050a14;       /* blu notte profondo */
+  --sfondo-card:   #0d1b2e;       /* blu card */
+  --sfondo-agenda: #08111f;       /* blu agenda */
+  --accento:       #e8c84a;       /* giallo stella */
+  --accento2:      #4af0e8;       /* ciano spazio */
+  --testo:         #dce8f5;       /* bianco freddo */
+  --testo-muto:    #6a87a8;       /* grigio-blu */
+  --bordo:         #1a3050;       /* bordo sottile */
+  --rosso:         #ff5c5c;       /* accento caldo */
+
+  --font-titolo: 'Orbitron', monospace;
+  --font-corpo:  'Syne', sans-serif;
+
+  --raggio:   12px;
+  --agenda-w: 200px;  /* larghezza agenda laterale */
+}
+
+/* ---------- RESET BASE ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* scorrimento fluido quando si clicca un anchor */
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--sfondo);
+  color: var(--testo);
+  font-family: var(--font-corpo);
+  font-size: 1rem;
+  line-height: 1.7;
+  min-height: 100vh;
+
+  /* sfondo stellato tramite gradiente radiale */
+  background-image:
+    radial-gradient(ellipse at 20% 20%, #0a1f3a 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, #0e1c30 0%, transparent 60%);
+}
+
+/* ---------- HEADER ---------- */
+header {
+  position: sticky;   /* rimane in cima durante lo scroll */
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 10, 20, 0.92);
+  border-bottom: 1px solid var(--bordo);
+  backdrop-filter: blur(8px);  /* effetto vetro smerigliato */
+  padding: 0.8rem 2rem;
+}
+
+.header-interno {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-simbolo {
+  font-size: 1.8rem;
+  color: var(--accento);
+  animation: rotazione 8s linear infinite; /* animazione JS-less */
+}
+
+.titolo-sito {
+  font-family: var(--font-titolo);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--accento);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sottotitolo-sito {
+  font-size: 0.78rem;
+  color: var(--testo-muto);
+  letter-spacing: 0.05em;
+}
+
+/* ---------- CONTENITORE: agenda + main affiancati ---------- */
+.contenitore {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  gap: 2rem;
+  align-items: flex-start; /* la main scorre, l'agenda resta */
+}
+
+/* ---------- AGENDA LATERALE ---------- */
+#agenda {
+  position: sticky;        /* si blocca durante lo scroll */
+  top: 80px;               /* sotto l'header */
+  width: var(--agenda-w);
+  flex-shrink: 0;          /* non si restringe */
+  background: var(--sfondo-agenda);
+  border: 1px solid var(--bordo);
+  border-radius: var(--raggio);
+  padding: 1.4rem 1rem;
+}
+
+.agenda-titolo {
+  font-family: var(--font-titolo);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--accento);
+  margin-bottom: 1rem;
+}
+
+#agenda ul {
+  list-style: none;        /* rimuove i pallini della lista */
+}
+
+#agenda ul li {
+  margin-bottom: 0.5rem;
+}
+
+#agenda ul li a {
+  display: block;
+  color: var(--testo-muto);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: all 0.25s ease;  /* transizione morbida */
+}
+
+/* stato hover: evidenzia il link */
+#agenda ul li a:hover,
+#agenda ul li a.attivo {
+  color: var(--accento);
+  border-left-color: var(--accento);
+  background: rgba(232, 200, 74, 0.07);
+  padding-left: 1rem;
+}
+
+/* ---------- MAIN: area contenuto principale ---------- */
+#scorrevole {
+  flex: 1;                  /* occupa tutto lo spazio rimasto */
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* ---------- SEZIONI (schede) ---------- */
+.scheda {
+  background: var(--sfondo-card);
+  border: 1px solid var(--bordo);
+  border-radius: var(--raggio);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+
+  /* animazione di entrata — gestita in script.js */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* classe aggiunta da JS quando la scheda è visibile */
+.scheda.visibile {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* riga colorata in cima a ogni scheda */
+.scheda::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accento), var(--accento2));
+}
+
+/* etichetta numerica della sezione */
+.scheda-etichetta {
+  font-family: var(--font-titolo);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--accento2);
+  margin-bottom: 0.8rem;
+}
+
+/* titoli delle sezioni */
+.scheda h2 {
+  font-family: var(--font-titolo);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--testo);
+  margin-bottom: 1.2rem;
+}
+
+.scheda p {
+  color: var(--testo-muto);
+  margin-bottom: 1rem;
+  max-width: 680px;
+}
+
+.scheda strong {
+  color: var(--testo);
+}
+
+/* numero grande nella sezione intro */
+.cifra-grande {
+  font-family: var(--font-titolo);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--accento);
+  margin-top: 1.5rem;
+  line-height: 1;
+}
+
+.cifra-grande span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--testo-muto);
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  margin-top: 0.3rem;
+}
+
+/* ---------- LINEA DEL TEMPO ---------- */
+#linea-tempo {
+  position: relative;
+  margin-top: 2rem;
+  padding-left: 1rem;
+}
+
+/* la linea verticale */
+#linea-tempo::before {
+  content: '';
+  position: absolute;
+  left: 60px;             /* allineata agli anni */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accento), var(--accento2), transparent);
+}
+
+/* singolo evento nella linea del tempo */
+.evento {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* anno sulla sinistra */
+.anno {
+  font-family: var(--font-titolo);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accento);
+  width: 44px;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+  text-align: right;
+}
+
+/* pallino sulla linea */
+.punto {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accento2);
+  border: 2px solid var(--sfondo-card);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+.evento:hover .punto {
+  transform: scale(1.5);
+  background: var(--accento);
+}
+
+/* testo dell'evento */
+.dettaglio strong {
+  color: var(--testo);
+  font-size: 0.95rem;
+}
+
+.dettaglio p {
+  font-size: 0.85rem;
+  color: var(--testo-muto);
+  margin: 0.2rem 0 0 0;
+}
+
+/* evento speciale (Artemis 2) evidenziato */
+.evento.evidenziato .anno {
+  color: var(--rosso);
+}
+
+.evento.evidenziato .punto {
+  background: var(--rosso);
+  box-shadow: 0 0 12px var(--rosso);
+}
+
+.evento.evidenziato .dettaglio strong {
+  color: var(--rosso);
+}
+
+/* ---------- SEZIONE ARTEMIS 2 ---------- */
+.scheda-artemis {
+  border-color: rgba(232, 200, 74, 0.3);  /* bordo dorato */
+}
+
+.artemis-box {
+  background: rgba(232, 200, 74, 0.04);
+  border: 1px solid rgba(232, 200, 74, 0.15);
+  border-radius: var(--raggio);
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.artemis-testo {
+  margin-bottom: 1.5rem;
+}
+
+/* griglia dati tecnici 2x2 */
+.dati-griglia {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.dato {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(74, 240, 232, 0.05);
+  border: 1px solid rgba(74, 240, 232, 0.15);
+  border-radius: 8px;
+}
+
+.dato-valore {
+  display: block;
+  font-family: var(--font-titolo);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accento2);
+}
+
+.dato-label {
+  font-size: 0.72rem;
+  color: var(--testo-muto);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* titolo equipaggio */
+.titolo-equipaggio {
+  font-family: var(--font-titolo);
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  color: var(--accento);
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+/* griglia 4 astronauti */
+.equipaggio-griglia {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.membro {
+  text-align: center;
+  padding: 1.2rem 0.8rem;
+  background: var(--sfondo);
+  border: 1px solid var(--bordo);
+  border-radius: var(--raggio);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.membro:hover {
+  border-color: var(--accento);
+  transform: translateY(-4px);
+}
+
+.membro-icona {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.membro strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--testo);
+  margin-bottom: 0.2rem;
+}
+
+.membro span {
+  font-size: 0.72rem;
+  color: var(--testo-muto);
+}
+
+/* box "perché conta" */
+.importanza-box {
+  background: rgba(255, 92, 92, 0.05);
+  border: 1px solid rgba(255, 92, 92, 0.2);
+  border-radius: var(--raggio);
+  padding: 1.8rem;
+}
+
+.importanza-box h3 {
+  font-family: var(--font-titolo);
+  font-size: 1rem;
+  color: var(--rosso);
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.importanza-box ul {
+  list-style: none;
+}
+
+.importanza-box ul li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.9rem;
+  color: var(--testo-muto);
+}
+
+.importanza-box ul li:last-child {
+  border-bottom: none;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  border-top: 1px solid var(--bordo);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.footer-interno {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-titolo {
+  font-family: var(--font-titolo);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--accento);
+  margin-bottom: 1.2rem;
+}
+
+/* contenitore link footer */
+.footer-link {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-link a {
+  color: var(--accento2);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(74, 240, 232, 0.25);
+  border-radius: 20px;
+  transition: all 0.25s ease;
+}
+
+.footer-link a:hover {
+  background: rgba(74, 240, 232, 0.1);
+  border-color: var(--accento2);
+  color: #fff;
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--testo-muto);
+}
+
+/* ---------- ANIMAZIONE STELLA ---------- */
+@keyframes rotazione {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+/* ---------- RESPONSIVO (schermi piccoli) ---------- */
+@media (max-width: 768px) {
+
+  /* agenda si nasconde su mobile */
+  #agenda {
+    display: none;
+  }
+
+  .dati-griglia,
+  .equipaggio-griglia {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scheda {
+    padding: 1.5rem;
+  }
+
+  .titolo-sito {
+    font-size: 1rem;
+  }
+}

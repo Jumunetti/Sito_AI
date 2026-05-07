@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oltre l'Orbita — Missioni Spaziali NASA</title>
+
+  <!-- Collegamento al foglio di stile esterno -->
+  <link rel="stylesheet" href="stile.css" />
+
+  <!-- Font Google: Orbitron per i titoli, Syne per il corpo -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Syne:wght@400;600;800&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ===== HEADER: barra in cima con nome del sito ===== -->
+  <header id="cima">
+    <div class="header-interno">
+      <span class="logo-simbolo">✦</span>
+      <h1 class="titolo-sito">Oltre l'Orbita</h1>
+      <p class="sottotitolo-sito">Missioni spaziali NASA — dal passato a Artemis 2</p>
+    </div>
+  </header>
+
+  <!-- ===== LAYOUT PRINCIPALE: agenda laterale + contenuto ===== -->
+  <div class="contenitore">
+
+    <!-- AGENDA LATERALE: navigazione ancorata alle sezioni -->
+    <nav id="agenda">
+      <p class="agenda-titolo">NAVIGA</p>
+      <ul>
+        <li><a href="#intro">Introduzione</a></li>
+        <li><a href="#cronologia">Cronologia</a></li>
+        <li><a href="#artemis">Artemis 2</a></li>
+        <li><a href="#cima">↑ Torna su</a></li>
+      </ul>
+    </nav>
+
+    <!-- MAIN: contenuto principale con scroll orizzontale a scorrimento -->
+    <main id="scorrevole">
+
+      <!-- ===== SEZIONE 1: Introduzione ===== -->
+      <section id="intro" class="scheda">
+        <div class="scheda-etichetta">01 — INTRO</div>
+        <h2>L'umanità guarda in su</h2>
+        <p>
+          Da quando Yuri Gagarin ha varcato per la prima volta il confine
+          tra la Terra e il vuoto cosmico nel 1961, l'esplorazione spaziale
+          ha trasformato il modo in cui ci vediamo come specie.
+        </p>
+        <p>
+          Questo sito ripercorre le tappe fondamentali delle missioni NASA
+          e ti porta fino ad oggi, alla vigilia di un nuovo capitolo lunare:
+          <strong>Artemis 2</strong>.
+        </p>
+        <div class="cifra-grande">60+<span>anni di esplorazione</span></div>
+      </section>
+
+      <!-- ===== SEZIONE 2: Cronologia missioni NASA ===== -->
+      <section id="cronologia" class="scheda">
+        <div class="scheda-etichetta">02 — STORIA</div>
+        <h2>Cronologia delle missioni</h2>
+        <p class="intro-sezione">Le tappe che hanno cambiato la storia dell'umanità.</p>
+
+        <!-- Linea del tempo verticale -->
+        <div id="linea-tempo">
+
+          <div class="evento">
+            <div class="anno">1961</div>
+            <div class="punto"></div>
+            <div class="dettaglio">
+              <strong>Mercury — Freedom 7</strong>
+              <p>Alan Shepard diventa il primo americano nello spazio.</p>
+            </div>
+          </div>
+
+          <div class="evento">
+            <div class="anno">1969</div>
+            <div class="punto"></div>
+            <div class="dettaglio">
+              <strong>Apollo 11</strong>
+              <p>Neil Armstrong e Buzz Aldrin allunano. "Un piccolo passo per l'uomo…"</p>
+            </div>
+          </div>
+
+          <div class="evento">
+            <div class="anno">1972</div>
+            <div class="punto"></div>
+            <div class="dettaglio">
+              <strong>Apollo 17</strong>
+              <p>Ultima missione Apollo con equipaggio sulla Luna.</p>
+            </div>
+          </div>
+
+          <div class="evento">
+            <div class="anno">1981</div>
+            <div class="punto"></div>
+            <div class="dettaglio">
+              <strong>Space Shuttle Columbia</strong>
+              <p>Primo volo dello Space Shuttle: nasce l'era dei veicoli riutilizzabili.</p>
+            </div>
+          </div>
+
+          <div class="evento">
+            <div class="anno">1990</div>
+            <div class="punto"></div>
+            <div class="dettaglio">
+              <strong>Hubble Space Telescope</strong>
+              <p>Lanciato in orbita, rivoluziona la nostra visione dell'universo.</p>
+            </div>
+          </div>
+
+          <div class="evento">
+            <div class="anno">1998</div>
+            <div class="punto"></div>
+            <div class="dettaglio">
+              <strong>ISS — primo modulo</strong>
+              <p>Inizia la costruzione della Stazione Spaziale Internazionale.</p>
+            </div>
+          </div>
+
+          <div class="evento">
+            <div class="anno">2004</div>
+            <div class="punto"></div>
+            <div class="dettaglio">
+              <strong>Spirit & Opportunity su Marte</strong>
+              <p>Due rover atterrano su Marte e studiano il suolo per anni.</p>
+            </div>
+          </div>
+
+          <div class="evento">
+            <div class="anno">2022</div>
+            <div class="punto"></div>
+            <div class="dettaglio">
+              <strong>Artemis 1</strong>
+              <p>La capsula Orion orbita attorno alla Luna senza equipaggio. Il ritorno è iniziato.</p>
+            </div>
+          </div>
+
+          <div class="evento evidenziato">
+            <div class="anno">2025</div>
+            <div class="punto"></div>
+            <div class="dettaglio">
+              <strong>Artemis 2 ✦</strong>
+              <p>Primo volo con equipaggio attorno alla Luna dal 1972. Prossima sezione ↓</p>
+            </div>
+          </div>
+
+        </div><!-- fine linea-tempo -->
+      </section>
+
+      <!-- ===== SEZIONE 3: Artemis 2 ===== -->
+      <section id="artemis" class="scheda scheda-artemis">
+        <div class="scheda-etichetta">03 — ARTEMIS 2</div>
+        <h2>Il ritorno umano alla Luna</h2>
+
+        <!-- Box missione principale -->
+        <div class="artemis-box">
+          <div class="artemis-testo">
+            <p>
+              <strong>Artemis 2</strong> è la prima missione con equipaggio del programma
+              Artemis della NASA. A bordo della capsula <em>Orion</em>, quattro astronauti
+              effettueranno un'orbita attorno alla Luna senza atterrarvi —
+              un passo fondamentale verso il ritorno permanente dell'umanità sul suolo lunare.
+            </p>
+            <p>
+              La missione dimostrerà che i sistemi di supporto vitale, navigazione e
+              rientro atmosferico funzionano con esseri umani a bordo, aprendo la strada
+              ad Artemis 3, che toccherà il suolo lunare.
+            </p>
+          </div>
+
+          <!-- Schede dati tecnici -->
+          <div class="dati-griglia">
+            <div class="dato">
+              <span class="dato-valore">4</span>
+              <span class="dato-label">Astronauti</span>
+            </div>
+            <div class="dato">
+              <span class="dato-valore">~10</span>
+              <span class="dato-label">Giorni di missione</span>
+            </div>
+            <div class="dato">
+              <span class="dato-valore">Orion</span>
+              <span class="dato-label">Veicolo spaziale</span>
+            </div>
+            <div class="dato">
+              <span class="dato-valore">SLS</span>
+              <span class="dato-label">Razzo vettore</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Equipaggio -->
+        <h3 class="titolo-equipaggio">L'equipaggio</h3>
+        <div class="equipaggio-griglia">
+
+          <div class="membro">
+            <div class="membro-icona">👨‍🚀</div>
+            <strong>Reid Wiseman</strong>
+            <span>Comandante — NASA</span>
+          </div>
+
+          <div class="membro">
+            <div class="membro-icona">👨‍🚀</div>
+            <strong>Victor Glover</strong>
+            <span>Pilota — NASA</span>
+          </div>
+
+          <div class="membro">
+            <div class="membro-icona">👩‍🚀</div>
+            <strong>Christina Koch</strong>
+            <span>Specialista — NASA</span>
+          </div>
+
+          <div class="membro">
+            <div class="membro-icona">👨‍🚀</div>
+            <strong>Jeremy Hansen</strong>
+            <span>Specialista — CSA (Canada)</span>
+          </div>
+
+        </div>
+
+        <!-- Perché è importante -->
+        <div class="importanza-box">
+          <h3>Perché conta?</h3>
+          <ul>
+            <li>🌕 Prima Luna con equipaggio dal 1972 — oltre 50 anni di attesa</li>
+            <li>👩‍🚀 Prima donna e prima persona di colore verso la Luna</li>
+            <li>🌍 Prima missione lunare con un astronauta non americano</li>
+            <li>🚀 Prova tecnologica fondamentale per future basi lunari</li>
+            <li>🔭 Passo verso Marte: la Luna è il campo di addestramento</li>
+          </ul>
+        </div>
+
+      </section><!-- fine artemis -->
+
+    </main><!-- fine main -->
+  </div><!-- fine contenitore -->
+
+  <!-- ===== FOOTER: link ufficiali NASA ===== -->
+  <footer>
+    <div class="footer-interno">
+      <p class="footer-titolo">🔗 Fonti ufficiali NASA</p>
+      <div class="footer-link">
+        <a href="https://www.nasa.gov" target="_blank" rel="noopener">nasa.gov</a>
+        <a href="https://www.nasa.gov/artemis" target="_blank" rel="noopener">Programma Artemis</a>
+        <a href="https://www.nasa.gov/humans-in-space/artemis/" target="_blank" rel="noopener">Artemis — Esseri Umani nello Spazio</a>
+        <a href="https://www.nasa.gov/mission/artemis-ii/" target="_blank" rel="noopener">Artemis 2 — Pagina ufficiale</a>
+        <a href="https://www.nasa.gov/history/" target="_blank" rel="noopener">Storia NASA</a>
+      </div>
+      <p class="footer-copy">Progetto didattico — Informatica · Scuola Superiore · 2025</p>
+    </div>
+  </footer>
+
+  <!-- Collegamento allo script JS esterno -->
+  <script src="script.js"></script>
+
+</body>
+</html>
