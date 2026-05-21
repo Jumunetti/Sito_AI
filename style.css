@@ -1,0 +1,459 @@
+/* =============================================
+   VARIABILI E RESET
+   ============================================= */
+:root {
+    --rosso:         #d42b2b;
+    --rosso-scuro:   #a01e1e;
+    --celeste:       #3a9fd4;
+    --celeste-scuro: #1e6e99;
+    --giallo:        #f5c518;
+    --giallo-scuro:  #c9a010;
+    --bianco:        #ffffff;
+    --bianco-sporco: #f7f7f7;
+    --testo-scuro:   #1a1a1a;
+    --testo-chiaro:  #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lora', Georgia, serif;
+    color: var(--testo-scuro);
+    background-color: var(--bianco-sporco);
+}
+
+/* =============================================
+   HEADER E NAVIGAZIONE
+   ============================================= */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--rosso-scuro);
+    border-bottom: 4px solid var(--giallo);
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--giallo);
+    letter-spacing: 0.05em;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 0.3rem;
+}
+
+nav ul li a {
+    display: block;
+    padding: 0.4rem 0.85rem;
+    color: var(--testo-chiaro);
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-size: 0.88rem;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+nav ul li a:hover {
+    background-color: var(--giallo);
+    color: var(--rosso-scuro);
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+#hero {
+    height: 520px;
+    background-image: url('immagini/tiro.webp');
+    background-size: cover;
+    background-position: center 30%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(160, 30, 30, 0.50) 0%,
+        rgba(30, 30, 30, 0.72) 100%);
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-overlay h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--bianco);
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+}
+
+.hero-overlay p {
+    font-size: 1.15rem;
+    color: var(--giallo);
+    font-style: italic;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+}
+
+/* =============================================
+   SEZIONI — alternanza chiara / colorata
+   ============================================= */
+.sezione-chiara {
+    background-color: var(--bianco);
+    color: var(--testo-scuro);
+}
+
+.sezione-scura {
+    background-color: var(--celeste-scuro);
+    color: var(--testo-chiaro);
+}
+
+.contenuto {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+
+.contenuto h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--rosso);
+    display: inline-block;
+}
+
+.sezione-chiara .contenuto h2 { color: var(--rosso-scuro); }
+.sezione-scura  .contenuto h2 {
+    color: var(--giallo);
+    border-bottom-color: var(--giallo);
+}
+
+.contenuto h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+}
+
+.sezione-chiara .contenuto h3 { color: var(--celeste-scuro); }
+.sezione-scura  .contenuto h3 { color: var(--giallo); }
+
+.contenuto p {
+    line-height: 1.85;
+    margin-top: 0.8rem;
+    max-width: 720px;
+}
+
+.intro-sezione {
+    margin-bottom: 2rem;
+    font-style: italic;
+    opacity: 0.85;
+}
+
+/* =============================================
+   BANDIERA A TRE — Attrezzatura
+   ============================================= */
+.bandiera-tre {
+    display: flex;
+    gap: 0;
+    margin-top: 2.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    min-height: 340px;
+}
+
+.banda {
+    flex: 1;
+    padding: 2.5rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: flex 0.4s ease;
+}
+
+.banda:hover {
+    flex: 1.4;
+}
+
+.banda-sinistra {
+    background-color: var(--celeste);
+    color: var(--bianco);
+}
+
+.banda-centrale {
+    background-color: var(--rosso);
+    color: var(--bianco);
+    border-left: 3px solid rgba(255,255,255,0.3);
+    border-right: 3px solid rgba(255,255,255,0.3);
+}
+
+.banda-destra {
+    background-color: var(--giallo);
+    color: var(--testo-scuro);
+}
+
+.banda-icona {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.banda h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: inherit;
+}
+
+.banda p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    max-width: 100%;
+}
+
+/* =============================================
+   TAB ORIZZONTALI — Discipline
+   ============================================= */
+.tab-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    border-bottom: 3px solid var(--giallo);
+}
+
+.tab-btn {
+    padding: 0.65rem 1.4rem;
+    background: transparent;
+    border: none;
+    border-radius: 6px 6px 0 0;
+    color: var(--testo-chiaro);
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    opacity: 0.6;
+}
+
+.tab-btn:hover {
+    background-color: rgba(245, 197, 24, 0.25);
+    opacity: 1;
+}
+
+.tab-btn.attivo {
+    background-color: var(--giallo);
+    color: var(--testo-scuro);
+    font-weight: 600;
+    opacity: 1;
+}
+
+.tab-contenuto {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 0 6px 6px 6px;
+    padding: 2rem;
+    min-height: 160px;
+}
+
+.tab-pannello {
+    display: none;
+}
+
+.tab-pannello.attivo {
+    display: block;
+}
+
+.tab-pannello h3 {
+    margin-top: 0;
+    font-size: 1.3rem;
+}
+
+.tab-pannello p {
+    max-width: 700px;
+}
+
+/* =============================================
+   BOX COPPA ITALIA
+   ============================================= */
+.coppa-link-box {
+    margin-top: 3rem;
+    padding: 2rem 2.5rem;
+    background-color: rgba(245, 197, 24, 0.12);
+    border: 2px solid var(--giallo);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.coppa-link-box p {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--testo-chiaro);
+    max-width: 100%;
+}
+
+.coppa-btn {
+    display: inline-block;
+    padding: 0.75rem 1.8rem;
+    background-color: var(--giallo);
+    color: var(--testo-scuro);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.coppa-btn:hover {
+    background-color: var(--rosso);
+    color: var(--bianco);
+    transform: translateY(-2px);
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+    background-color: var(--rosso-scuro);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    border-top: 3px solid var(--giallo);
+}
+
+/* =============================================
+   RESPONSIVE — tablet e mobile
+   ============================================= */
+/* =============================================
+   RESPONSIVE — tablet (fino a 1024px)
+   ============================================= */
+@media (max-width: 1024px) {
+
+    .tab-bar {
+        gap: 0.3rem;
+    }
+
+    .tab-btn {
+        font-size: 0.88rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .coppa-link-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .coppa-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* =============================================
+   RESPONSIVE — mobile (fino a 768px)
+   ============================================= */
+@media (max-width: 768px) {
+
+    .header-inner {
+        flex-direction: column;
+        height: auto;
+        padding: 0.8rem 1rem;
+        gap: 0.5rem;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.2rem;
+    }
+
+    nav ul li a {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.6rem;
+    }
+
+    #hero {
+        height: 340px;
+    }
+
+    .bandiera-tre {
+        flex-direction: column;
+    }
+
+    .banda:hover {
+        flex: 1;
+    }
+
+    /* Tab: ogni bottone occupa metà riga su mobile */
+    .tab-bar {
+        border-bottom: none;
+        gap: 0.4rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .tab-btn {
+        flex: 1 1 calc(50% - 0.4rem);
+        font-size: 0.8rem;
+        padding: 0.55rem 0.5rem;
+        text-align: center;
+        border-radius: 6px;
+    }
+
+    .tab-contenuto {
+        border-radius: 6px;
+        padding: 1.4rem 1.2rem;
+    }
+
+    /* Coppa box: colonna centrata */
+    .coppa-link-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 1.2rem;
+    }
+
+    .coppa-btn {
+        width: 100%;
+        text-align: center;
+        padding: 0.85rem 1rem;
+    }
+}
